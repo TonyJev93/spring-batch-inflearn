@@ -3,7 +3,7 @@ spring:
     active: mysql
   batch:
     job:
-      enabled: false # 부트 실행 시 job 자동실행 방지
+      enabled: true # 부트 실행 시 job 자동실행 방지
 ---
 spring:
   config:
@@ -31,4 +31,4 @@ spring:
       driver-class-name: com.mysql.cj.jdbc.Driver
   batch:
     jdbc:
-      initialize-schema: never
+      initialize-schema: always

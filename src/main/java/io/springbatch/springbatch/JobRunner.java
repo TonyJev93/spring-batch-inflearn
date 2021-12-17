@@ -12,12 +12,13 @@ import org.springframework.stereotype.Component;
 import java.util.Date;
 
 // ApplicationRunner : SpringBoot 가 초기화되면 호출되는 기본 러너
-@Component
+//@Component
 @AllArgsConstructor
 public class JobRunner implements ApplicationRunner {
 
     private final JobLauncher jobLauncher; // SpringBatch 초기화 시 Bean 으로 등록 됨.
     private final Job simpleJob;
+    private final Job executionContextJob;
 
     /*
      * @Component 주석 처리 후(ApplicationRunner 비활성화), spring.batch.job.enable = false 처리 후,
@@ -34,5 +35,6 @@ public class JobRunner implements ApplicationRunner {
                 .toJobParameters();
 
         jobLauncher.run(simpleJob, jobParameters);
+        jobLauncher.run(executionContextJob, jobParameters);
     }
 }
