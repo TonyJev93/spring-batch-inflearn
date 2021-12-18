@@ -6,6 +6,7 @@ import io.springbatch.springbatch.task.ExecutionContextTasklet3;
 import io.springbatch.springbatch.task.ExecutionContextTasklet4;
 import lombok.RequiredArgsConstructor;
 import org.springframework.batch.core.Job;
+import org.springframework.batch.core.JobExecutionListener;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
@@ -23,6 +24,8 @@ public class ExecutionContextJobConfiguration {
     private final ExecutionContextTasklet3 executionContextTasklet3;
     private final ExecutionContextTasklet4 executionContextTasklet4;
 
+    private final JobExecutionListener jobExecutionListener;
+
 
     @Bean
     public Job executionContextJob() {
@@ -31,6 +34,7 @@ public class ExecutionContextJobConfiguration {
                 .next(executionContextStep2())
                 .next(executionContextStep3())
                 .next(executionContextStep4())
+                .listener(jobExecutionListener)
                 .build();
     }
 
