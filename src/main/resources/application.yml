@@ -3,7 +3,7 @@ spring:
     active: mysql
   batch:
     job:
-      enabled: true # 부트 실행 시 job 자동실행 방지
+      enabled: false # 부트 실행 시 job 자동실행 방지
 ---
 spring:
   config:
