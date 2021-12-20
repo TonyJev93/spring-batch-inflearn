@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
 
 import java.util.Map;
 
-//@Configuration
+@Configuration
 @RequiredArgsConstructor
 public class SimpleJobConfiguration {
     private final JobBuilderFactory jobBuilderFactory;
@@ -33,9 +33,7 @@ public class SimpleJobConfiguration {
                     System.out.println("=================== stepContribution =================");
                     final JobParameters jobParameters = stepContribution.getStepExecution().getJobParameters();
 
-                    jobParameters.getParameters().forEach((key, jobParameter) -> {
-                        System.out.println(key + ":" + jobParameter.getValue());
-                    });
+                    jobParameters.getParameters().forEach((key, jobParameter) -> System.out.println(key + ":" + jobParameter.getValue()));
                     System.out.println("======================================================");
 
                     System.out.println("=================== chunkContext =================");
